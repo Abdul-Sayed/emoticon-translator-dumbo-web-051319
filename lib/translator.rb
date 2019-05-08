@@ -23,11 +23,14 @@ end
 def get_japanese_emoticon(library, emoji)
   emoticon_hash = load_library(library)
   eng_to_jap_hash = emoticon_hash["get_emoticon"]
-  pp eng_to_jap_hash
 
-  jap_emoji = eng_to_jap_hash[emoji]
-  puts jap_emoji
-  return jap_emoji
+  if eng_to_jap_hash.has_key?(emoji)
+    puts "found"
+    jap_emoji = eng_to_jap_hash[emoji]
+    return jap_emoji
+  else
+    return "Sorry, that emoticon was not found"
+  end
 end
 
 ###############################################################
